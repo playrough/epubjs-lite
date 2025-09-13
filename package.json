@@ -1,0 +1,46 @@
+{
+    "$schema": "https://json.schemastore.org/package.json",
+    "name": "epubjs-lite",
+    "version": "0.1.0",
+    "private": true,
+    "description": "A minimal EPUB3 reader library (vanilla JS) inspired by epub.js",
+    "type": "module",
+    "main": "./dist/epubjs-lite.iife.min.js",
+    "module": "./dist/epubjs-lite.esm.js",
+    "exports": {
+        ".": "./dist/epubjs-lite.iife.min.js"
+    },
+    "keywords": [
+        "epub",
+        "epub3",
+        "reader",
+        "javascript",
+        "jszip",
+        "rendition"
+    ],
+    "author": "PlayRough",
+    "license": "MIT",
+    "devDependencies": {
+        "esbuild": "^0.25.9"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/playrough/epubjs-lite.git"
+    },
+    "bugs": {
+        "url": "https://github.com/playrough/epubjs-lite/issues"
+    },
+    "homepage": "https://github.com/playrough/epubjs-lite#readme",
+    "files": [
+        "dist",
+        "src",
+        "README.md",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build:esm": "esbuild src/index.js --bundle --format=esm --outfile=dist/epubjs-lite.esm.js",
+        "build:iife": "esbuild src/index.js --bundle --format=iife --global-name=EpubJSLite --outfile=dist/epubjs-lite.iife.js",
+        "build:iife:min": "esbuild src/index.js --bundle --format=iife --global-name=EpubJSLite --minify --outfile=dist/epubjs-lite.iife.min.js",
+        "build": "npm run build:esm && npm run build:iife && npm run build:iife:min"
+    }
+}
